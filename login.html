@@ -77,11 +77,12 @@
             if (email === "cruz.vjd@gmail.com" && password === "0192837465") {
                 alert("Log in successful! Welcome back, Vivian J. Dela Cruz!");
                 attempt_counter = 0; // reset after success
-                messageEl.innerHTML = "";
+                document.getElementById("message").innerHTML = ""; // clear message
                 window.location.href = "virtualntbks.html"; // go to second page
                 break; // stop loop
             } else if (email === "" || password === "") {
                 alert("Please fill in all fields.");
+                document.getElementById("message").innerHTML = ""; // clear message
                 break;
             } else {
                 attempt_counter++;
