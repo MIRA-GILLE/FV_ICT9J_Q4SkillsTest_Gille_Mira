@@ -40,10 +40,10 @@
    
         
         <label>Email Address:</label>
-        <input type="email" id="email" class="form-control mb-3" placeholder="Email here">
+        <input type="email" id="email" class="form-control mb-3" placeholder="Email address...">
         
         <label>Password:</label>
-        <input type="password" id="password" class="form-control mb-3" placeholder="Password here">
+        <input type="password" id="password" class="form-control mb-3" placeholder="Password...">
 
         <div class="form-check d-flex justify-content-center mb-3">
             <input class="form-check-input me-2" type="checkbox" id="checkoutboxID" onclick="checkcheckoutboxID()">
@@ -60,6 +60,33 @@
 </div>
 
 <script>
+    // Variable for tracking login attempts
+    let attempt_counter = 0;
+
+    // start with function
+    function function_name(){
+        //declare variables for retrieving input field values and variables for granted and denied messages.
+        
+        do {
+            if (email === "" && password === "") {
+                alert();
+                attempt_counter = 0; // reset after success
+                document.getElementById("").innerHTML = "";
+                window.location.href = "notebooks.html"; //go to second page
+                break; // stop loop
+            } else {
+                attempt_counter++;
+                document.getElementById("").innerHTML =
+                    "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+            }
+        } while (false); 
+
+        if (attempt_counter >= 3) {
+            alert();
+            document.getElementById("").disabled = true; // lock button
+        }
+    }
+
     function checkLogIn() {
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
