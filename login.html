@@ -31,31 +31,33 @@
         gap: 10px;
     }
 </style>
+</style>
 </head>
+
+<body>
 
 <div class="box">
     <h1 class="fw-bold fs-4">LOG IN AUTHENTICATION FORM</h1>
     <p>Please fill out the following blanks to log in.</p>
-    
-   
-        
+
+    <form id="loginForm" onsubmit="return false;">
         <label>Email Address:</label>
         <input type="email" id="email" class="form-control mb-3" placeholder="Email address...">
-        
+
         <label>Password:</label>
         <input type="password" id="password" class="form-control mb-3" placeholder="Password...">
+
+        <div id="message" class="text-danger mb-3"></div>
 
         <div class="form-check d-flex justify-content-center mb-3">
             <input class="form-check-input me-2" type="checkbox" id="checkoutboxID" onclick="checkcheckoutboxID()">
             <label class="form-check-label" for="checkoutboxID">Remember me</label>
-        </div> 
-
-        <div class="button-group">
-            <button type="submit" class="btn btn-dark">Log In</button>
-            
-            <button type="reset" class="btn btn-outline-danger">Clear All</button>
         </div>
 
+        <div class="button-group">
+            <button type="button" class="btn btn-dark" id="loginBtn" onclick="function_name()">Log In</button>
+            <button type="reset" class="btn btn-outline-danger">Clear All</button>
+        </div>
     </form>
 </div>
 
@@ -65,51 +67,42 @@
 
     // start with function
     function function_name(){
-        //declare variables for retrieving input field values and variables for granted and denied messages.
-        
-        do {
-            if (email === "" && password === "") {
-                alert();
-                attempt_counter = 0; // reset after success
-                document.getElementById("").innerHTML = "";
-                window.location.href = "vn.html"; //go to second page
-                break; // stop loop
-            } else {
-                attempt_counter++;
-                document.getElementById("").innerHTML =
-                    "Incorrect email and/or password. Attempt " + attempt_counter + " of 3 ";
-            }
-        } while (false); 
-
-        if (attempt_counter >= 3) {
-            alert();
-            document.getElementById("").disabled = true; // lock button
-        }
-    }
-
-    function checkLogIn() {
+        // retrieve input values and message/button elements
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
-        
-        if (email === "cruz.vj@gmail.com" && password === "0192837465") {
-            alert("Log in successful! Welcome back, Vivian J. Dela Cruz!");
-        } else if (email === "" || password === "") {
-            alert("Please fill in all fields.");
-        } else {
-            alert("Log in failed. Incorrect email or password.");
+        let messageEl = document.getElementById("message");
+
+        do {
+            // successful credentials (same as existing check)
+            if (email === "cruz.vj@gmail.com" && password === "0192837465") {
+                alert("Log in successful! Welcome back, Vivian J. Dela Cruz!");
+                attempt_counter = 0; // reset after success
+                messageEl.innerHTML = "";
+                window.location.href = "vn.html"; // go to second page
+                break; // stop loop
+            } else if (email === "" || password === "") {
+                alert("Please fill in all fields.");
+                break;
+            } else {
+                attempt_counter++;
+                messageEl.innerHTML = "Incorrect email and/or password. Attempt " + attempt_counter + " of 3";
+            }
+        } while (false);
+
+        if (attempt_counter >= 3) {
+            alert("Too many failed attempts. Login disabled.");
+            document.getElementById("loginBtn").disabled = true; // lock button
         }
     }
 
     function checkcheckoutboxID() {
         let checkbox = document.getElementById("checkoutboxID").checked;
-        
+
         if (checkbox) {
             alert("By selecting the checkbox, you agree to save your details.");
         }
     }
 </script>
-</head>
-<body>
-    
+
 </body>
 </html>
