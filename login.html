@@ -72,12 +72,12 @@
                 alert();
                 attempt_counter = 0; // reset after success
                 document.getElementById("").innerHTML = "";
-                window.location.href = "notebooks.html"; //go to second page
+                window.location.href = "vn.html"; //go to second page
                 break; // stop loop
             } else {
                 attempt_counter++;
                 document.getElementById("").innerHTML =
-                    "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+                    "Incorrect email and/or password. Attempt " + attempt_counter + " of 3 ";
             }
         } while (false); 
 
@@ -91,8 +91,8 @@
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
         
-        if (email === "ayokona@gmail.com" && password === "y0k0n4r1n") {
-            alert("Log in successful! Welcome back, Ayokona!");
+        if (email === "delacruz.vj@gmail.com" && password === "0192837465") {
+            alert("Log in successful! Welcome back, Vivian!");
         } else if (email === "" || password === "") {
             alert("Please fill in all fields.");
         } else {
